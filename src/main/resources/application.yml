@@ -1,0 +1,65 @@
+server:
+  port: 8095
+
+spring:
+  profiles:
+    active: default
+  servlet:
+    multipart:
+      enabled: true
+      location: ${values.input_folder}
+      max-file-size: -1
+      max-request-size: -1
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  main:
+    banner-mode: off
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/natlex_test_app_db
+    username: postgres
+    password: postgres
+    platform: postgres
+    continue-on-error: true
+    configuration:
+      maximum-pool-size: 5
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+values:
+  input_folder: "data/input"
+  output_folder: "data/output"
+  test_xls_file: "data/example_xls/example.xls"
+  table_header: >
+    Section name, 
+    Class 1 name, 
+    Class 1 code, 
+    Class 2 name, 
+    Class 2 code, 
+    Class M name, 
+    Class M code
+  url:
+    user:
+      controller: user
+    section:
+      controller: section
+      by_code: /by-code
+    geological:
+      controller: geological
+    file:
+      controller: file
+      import: /import
+      export: /export
+
+
+
