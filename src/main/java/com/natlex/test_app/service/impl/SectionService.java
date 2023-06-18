@@ -6,6 +6,7 @@ import com.natlex.test_app.service.ISectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,8 @@ public class SectionService implements ISectionService {
 
     @Override
     public List<Section> getByGeologicalCode(String code) {
-        return sectionRepository.findByGeologicalClassesCode(code);
+        List<Section> byGeologicalClassesCode = sectionRepository.findByGeologicalClassesCode(code);
+        return byGeologicalClassesCode != null ? byGeologicalClassesCode : Collections.emptyList();
     }
 
     @Override
@@ -27,7 +29,8 @@ public class SectionService implements ISectionService {
 
     @Override
     public List<Section> getAll(){
-        return sectionRepository.findAll();
+        List<Section> sectionList = sectionRepository.findAll();
+        return sectionList != null ? sectionList : Collections.emptyList();
     }
 
     @Override
