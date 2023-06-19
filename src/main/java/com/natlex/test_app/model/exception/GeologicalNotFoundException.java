@@ -6,7 +6,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class GeologicalNotFoundException  extends ResponseStatusException {
 
     public GeologicalNotFoundException() {
-        super(HttpStatus.BAD_REQUEST, "Geological not not found");
+        super(HttpStatus.NOT_FOUND, "Geological not not found");
     }
 
 }
